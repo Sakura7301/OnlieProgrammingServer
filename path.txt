@@ -1,0 +1,6 @@
+调试->OnlieProgramming属性:
+	配置属性->VC++目录
+		包含库目录:$(IncludePath);$(ISenseIncludePath)
+		库目录:/root/backup/libevent-2.1.11-stable/.libs
+	链接器->输入
+		库依赖项:event
