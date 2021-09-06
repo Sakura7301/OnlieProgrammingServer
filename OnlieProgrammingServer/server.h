@@ -51,3 +51,8 @@ void read_userid(struct bufferevent *bev, char *userid);
 //读取编程语言类别函数
 int read_language(struct bufferevent *bev);
 
+//删除用户文件夹的函数
+void rm_dir(char* userid);
+
+//数据处理函数
+int data_processing(struct bufferevent *bev);

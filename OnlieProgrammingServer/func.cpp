@@ -10,14 +10,12 @@ bool read_head(struct bufferevent *bev)
 	{
 		return true;
 	}
-
 	return false;
 }
 
 //读取用户ID
 void read_userid(struct bufferevent *bev, char* userid)
 {
-
 	bufferevent_read(bev, userid, USER_ID_LEN);//读取用户ID
 }
 
@@ -29,21 +27,63 @@ int read_language(struct bufferevent *bev)
 	bufferevent_read(bev, language, USER_LANGUAGE_LEN);//读取语言
 	if (strlen(language) == 8)
 	{
-		if (strcmp(language, C) == 0)//C语言
-		{
+		if (strcmp(language, C) == 0)
 			return 1;
-		}
 
-		if (strcmp(language, CPP) == 0)//C++
-		{
+		if (strcmp(language, CPP) == 0)
 			return 2;
-		}
 
-		if (strcmp(language, PYTHON) == 0)//python
-		{
+		if (strcmp(language, PYTHON) == 0)
 			return 3;
-		}
 	}
 	return -1;
 }
 
+//删除用户文件夹
+void rm_dir(char* userid)
+{
+	chdir(DIR);//变更工作目录到源程序所在的文件夹
+	string delete_source;
+	delete_source = "rm -rf " + (string)userid;
+	system(delete_source.c_str());//删除用户文件目录
+}
+
+//数据处理函数
+int data_processing(struct bufferevent *bev)
+{
+	char userid[9] = { 0 };
+	memset(userid, '\0', sizeof(userid));
+	//读取包头
+	if (read_head(bev))
+	{
+		//读取id
+		read_userid(bev, userid);
+		if (strlen(userid) > 0) {
+			//读取编程语言
+			int language = read_language(bev);
+			if (language == -1) {
+				return -1;//读取失败
+			}
+
+			//读取数据包并创建相关文件夹
+			int res = makedir_test(bev, userid, language);
+			if (res == -1) {
+				return -2;//文件夹创建失败
+			}
+
+			//编译
+			res = make_test(bev, res);
+			if (res == -1){
+				return -3;//编译失败
+			}
+
+			//运行
+			res=out_test(bev, res);
+			if(res==-1){
+				return -4;//运行失败
+			}
+		}
+	}
+	rm_dir(userid);//删除用户目录
+	return 0;
+}
