@@ -41,7 +41,7 @@ int make_test(struct bufferevent *bev, int language)
 	system("touch make");
 	if (language == 1)
 	{
-		system("gcc test.c  > make 2>&1");//重定向到文件make中
+		system("timeout 1 gcc test.c  > make 2>&1");//重定向到文件make中
 		char buf[BUFFSIZE];
 		memset(buf, '\0', sizeof(buf));
 		ifstream ifs;
@@ -61,7 +61,7 @@ int make_test(struct bufferevent *bev, int language)
 
 	if (language == 2)
 	{
-		system("g++ test.cpp  > make 2>&1");//重定向到文件make中
+		system("timeout 1 g++ test.cpp  > make 2>&1");//重定向到文件make中
 		char buf[BUFFSIZE];
 		memset(buf, '\0', sizeof(buf));
 		ifstream ifs;
@@ -91,12 +91,12 @@ int make_test(struct bufferevent *bev, int language)
 //运行程序的函数
 int out_test(struct bufferevent *bev, int language)
 {
-	string name("touch ");
-	name = name + "out";
+	string name("touch out");
 	system(name.c_str());//创建用于存储程序运行结果的文件out
 	if (language == 1|| language==2)
 	{
-		system("./a.out > out 2>&1");//重定向到文件out中
+		//使用timeout限制程序执行时间为0.01秒(防止死循环的出现)
+		system("timeout 1 ./a.out > out 2>&1");//重定向到文件out中
 		char buf[BUFFSIZE];
 		memset(buf, '\0', sizeof(buf));
 		ifstream ifs;
@@ -116,7 +116,8 @@ int out_test(struct bufferevent *bev, int language)
 
 	if (language == 3)
 	{
-		system("python3 test.py > out 2>&1");//重定向
+		//使用timeout限制程序执行时间为0.01秒
+		system("timeout 1 python3 test.py > out 2>&1");//重定向
 		char buf[BUFFSIZE];
 		memset(buf, '\0', sizeof(buf));
 		ifstream ifs;

@@ -87,3 +87,40 @@ int data_processing(struct bufferevent *bev)
 	rm_dir(userid);//删除用户目录
 	return 0;
 }
+
+//线程的回调函数
+void *pthread_func(void* arg)
+{
+	struct bufferevent *bev = (bufferevent *)arg;
+	data_processing(bev);
+	return (void*)NULL;
+}
+
+//线程创建函数
+int pthread_create(struct bufferevent *bev)
+{
+	pthread_t tid;
+	pthread_attr_t attr;//创建线程属性
+	int ret;
+	ret = pthread_attr_init(&attr);//初始化线程属性
+	if (ret != 0)
+	{
+		fprintf(stderr, "pthread_attr_init error:%s\n", strerror(ret));
+		exit(1);
+	}
+	//设置线程属性为分离态
+	ret = pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
+	if (ret != 0)
+	{
+		fprintf(stderr, "pthread_attr_setdetachstate error:%s\n", strerror(ret));
+		exit(1);
+	}
+	//基于属性创建线程
+	ret = pthread_create(&tid, &attr, pthread_func, bev);
+	if (ret != 0)
+	{
+		fprintf(stderr, "pthread_attr_setdetachstate error:%s\n", strerror(ret));
+		exit(1);
+	}
+	return 0;
+}

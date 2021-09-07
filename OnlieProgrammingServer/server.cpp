@@ -3,7 +3,8 @@
 //读回调函数
 void read_cb(struct bufferevent *bev, void *arg)
 {
-	data_processing(bev);//调用数据处理函数
+	//创建线程执行任务
+	pthread_create(bev);
 }
 
 

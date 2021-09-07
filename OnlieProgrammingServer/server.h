@@ -5,6 +5,8 @@
 #include<string>
 #include<vector>
 #include<fstream>
+#include<unistd.h>
+#include<pthread.h>
 #include<event2/event.h>
 #include<event2/listener.h>
 #include<event2/bufferevent.h>
@@ -56,3 +58,9 @@ void rm_dir(char* userid);
 
 //数据处理函数
 int data_processing(struct bufferevent *bev);
+
+//线程的回调函数
+void *pthread_func(void* arg);
+
+//线程创建函数
+int pthread_create(struct bufferevent *bev);
