@@ -40,7 +40,11 @@
   
   
   **测试效果展示:[HTTP]**
-  
+      C测试
+  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/C.gif)
+  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/picture/python%E9%80%9A%E8%BF%87%E7%A4%BA%E4%BE%8B.png)
+      
+     
   
   **关键词**:C/S模型、libevent
 
