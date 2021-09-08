@@ -21,7 +21,7 @@
       6.服务器删除客户端的文件夹
   
   
-  **测试效果展示:**
+  **测试效果展示:[TCP]**
   
       服务器启动
   ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/picture/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8.png)
@@ -37,6 +37,10 @@
         python测试
   ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/picture/python%E9%94%99%E8%AF%AF%E7%A4%BA%E4%BE%8B.png)
   ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/picture/python%E9%80%9A%E8%BF%87%E7%A4%BA%E4%BE%8B.png)
+  
+  
+  **测试效果展示:[HTTP]**
+  
   
   **关键词**:C/S模型、libevent
 
