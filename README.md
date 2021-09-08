@@ -21,7 +21,7 @@
       6.服务器删除客户端的文件夹
   
   
- ## **测试效果展示:[TCP]**
+ ## **测试效果展示:**
   
 ### 服务器启动
   ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/picture/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8.png)
