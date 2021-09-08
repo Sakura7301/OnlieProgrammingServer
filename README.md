@@ -40,9 +40,26 @@
   
   
   **测试效果展示:[HTTP]**
-      C测试
+  
+  **C测试**
+  
+  
   ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/C.gif)
-  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/picture/python%E9%80%9A%E8%BF%87%E7%A4%BA%E4%BE%8B.png)
+  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/C_error.gif)
+  
+  
+  **C++测试**
+  
+  
+  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/CPP.gif)
+  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/CPP_error.gif)
+  
+  
+  **C++测试**
+  
+  
+  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/Python.gif)
+  ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/Python_error.gif)
       
      
   
