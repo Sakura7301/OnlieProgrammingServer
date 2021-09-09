@@ -45,13 +45,13 @@ int get_code_pos(char* data)
 {
 	char* datas= data;
 	int index = 0;
-	for (int i=0;i<(int)strlen(datas)-1;i++)
+	for (int i=0;i<(int)strlen(datas);i++)
 	{
-		if (index == 6) {
-			return i;
-		}
 		if (datas[i] == '*') {
 			index++;
+			if (index == 6) {
+				return i+1;
+			}
 			continue;
 		}
 		index=0;
@@ -63,13 +63,13 @@ int get_code_end_pos(char* data)
 {
 	char* datas = data;
 	int index = 0;
-	for (int i = 0; i < (int)strlen(datas) - 1; i++)
+	for (int i = 0; i < (int)strlen(datas); i++)
 	{
-		if (index == 6) {
-			return i;
-		}
 		if (datas[i] == '#') {
 			index++;
+			if (index == 6) {
+				return i-6;
+			}
 			continue;
 		}
 		index = 0;

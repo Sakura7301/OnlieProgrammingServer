@@ -69,15 +69,23 @@ int dispose_data(struct evhttp_request *req)
 	}
 
 	string program = post_data;
-	long end=program.find_first_of('`');//代码结束位置下标
+	int end=get_code_end_pos(post_data);//代码结束位置下标
+	//cout << "end:"<<end ;
 	int pos= get_code_pos(post_data);//获取代码所在位置的下标
+	//cout<<"  pos:"<<pos<<endl;
 	int len = end - pos;
 	if (pos == -1){
 		cout << "Not fund code" << endl;
 		return -1;
 	}
+	if (end == -1) {
+		cout << "Not fund code end" << endl;
+		return -1;
+	}
 	program = program.substr(pos,len);
+	//cout << "--------------------" << endl;
 	//cout << program << endl;
+	//cout << "--------------------" << endl;
 
 	int res = make_dir(userid, language, program);
 	if (res == -1){
