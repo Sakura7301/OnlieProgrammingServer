@@ -29,21 +29,18 @@ int make_dir(const char* userid, const char* language,string data)
 			ofs.open("test.c", ios::trunc | ios::out);//如果文件已经存在,则删除再创建打开
 			ofs << data;
 			ofs.close();
-			ofs.clear();
 			return 1;
 		}
 		if (type == 2){
 			ofs.open("test.cpp", ios::trunc | ios::out);
 			ofs << data;
 			ofs.close();
-			ofs.clear();
 			return 2;
 		}
 		if (type == 3){
 			ofs.open("test.py", ios::trunc | ios::out);
 			ofs << data;
 			ofs.close();
-			ofs.clear();
 			return 3;
 		}
 	}
@@ -53,26 +50,25 @@ int make_dir(const char* userid, const char* language,string data)
 //编译函数
 int make_test(evhttp_request *req,int language)
 {
-	char buf[BUFFSIZE] = {0};
+	char buf[BUFSIZ] = {0};
 	memset(buf, '\0', sizeof(buf));
-	system("touch make");
+	system("touch make.txt");
 	struct evbuffer *buf_make = evbuffer_new();
 	if (language == 1)
 	{
-		system("timeout 1 gcc test.c  > make 2>&1");//重定向到文件make中
+		system("timeout 1 gcc test.c  > make.txt 2>&1");//重定向到文件make中
 		ifstream ifs;
-		ifs.open("make", ios::in);
+		ifs.open("make.txt", ios::in);
 		if (!ifs.is_open()) {
-			cout << "openfile make error" << endl;
+			cout << "openfile make.txt error" << endl;
 			ifs.close();
-			ifs.clear();
 			return -1;
 		}
 		ifs.get(buf, sizeof(buf), '\0');//从文件中读取字符到字符串buf，当遇到字符'\0'或读取了sizeof(buf)个字符时终止。
 		ifs.close();
-		ifs.clear();
 		if (strlen(buf) > 0)//make中有数据说明编译报错了
 		{
+			cout<<buf<<endl;
 			evbuffer_add_printf(buf_make, buf);
 			evhttp_send_reply(req, HTTP_OK, "OK", buf_make);//发送数据
 			evbuffer_free(buf_make);
@@ -82,23 +78,22 @@ int make_test(evhttp_request *req,int language)
 
 	if (language == 2)
 	{
-		system("timeout 1 g++ test.cpp  > make 2>&1");//重定向到文件make中
+		system("timeout 1 g++ test.cpp  > make.txt 2>&1");//重定向到文件make中
 		ifstream ifs;
-		ifs.open("make", ios::in);
+		ifs.open("make.txt", ios::in);
 		if (!ifs.is_open()) {
-			cout << "openfile make error" << endl;
+			cout << "openfile make.txt error" << endl;
 			ifs.close();
-			ifs.clear();
 			return -1;
 		}
 		ifs.get(buf, sizeof(buf), '\0');
 		ifs.close();
-		ifs.clear();
 		if (strlen(buf) > 0)//make中有数据说明编译报错了
 		{
 			evbuffer_add_printf(buf_make, buf);
 			evhttp_send_reply(req, HTTP_OK, "OK", buf_make);//发送数据
 			evbuffer_free(buf_make);
+			cout << buf << endl;
 			return -1;
 		}
 	}
@@ -108,7 +103,7 @@ int make_test(evhttp_request *req,int language)
 //运行函数
 int out_test(evhttp_request *req,int language)
 {
-	char data[BUFFSIZE] = {0};
+	char data[BUFSIZ] = {0};
 	memset(data, '\0', sizeof(data));
 	string name("touch out");
 	system(name.c_str());//创建用于存储程序运行结果的文件out
@@ -122,12 +117,10 @@ int out_test(evhttp_request *req,int language)
 		if (!ifs.is_open()) {
 			cout << "openfile out error" << endl;
 			ifs.close();
-			ifs.clear();
 			return -1;
 		}
 		ifs.get(data, sizeof(data), '\0');//从文件中读取字符到字符串data，当遇到字符'\0'或读取了sizeof(buf)个字符时终止。
 		ifs.close();
-		ifs.clear();
 		if (strlen(data) > 0) {
 			evbuffer_add_printf(buf_make, data);
 			evhttp_send_reply(req, HTTP_OK, "OK", buf_make);//发送数据
@@ -146,12 +139,10 @@ int out_test(evhttp_request *req,int language)
 		if (!ifs.is_open()) {
 			cout << "openfile out error" << endl;
 			ifs.close();
-			ifs.clear();
 			return -1;
 		}
 		ifs.get(data, sizeof(data), '\0');
 		ifs.close();
-		ifs.clear();
 		if (strlen(data) > 0){
 			evbuffer_add_printf(buf_make, data);
 			evhttp_send_reply(req, HTTP_OK, "OK", buf_make);//发送数据

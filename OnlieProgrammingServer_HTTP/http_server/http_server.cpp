@@ -48,32 +48,37 @@ void encapsulation_header(struct evhttp_request &req)
 //数据处理
 int dispose_data(struct evhttp_request *req)
 {
-	//输出的内容
-
 	//获取POST方法的数据
 	char *post_data = (char *)EVBUFFER_DATA(req->input_buffer);
-	char userid[9] = { 0 };
-	char language[9] = { 0 };
-	char head[7] = { 0 };
+	char userid[BUFSIZ] = { 0 };
+	char language[BUFSIZ] = { 0 };
+	char head[BUFSIZ] = { 0 };
 	//获取head userid language
 	sscanf(post_data, "%[^ ] %[^ ] %[^ \r\n]", head,userid,language);
 	if (strcmp(head, HEAD) != 0){
 		cout << "head error" << endl;
 		return -1;
 	}
-	if (strlen(userid) != 8){
+	if (strlen(userid) != USER_ID_LEN){
 		cout << "id error" << endl;
 		return -1;
 	}
-	if (strlen(language) != 8) {
+	if (strlen(language) != USER_LANGUAGE_LEN) {
 		cout << "language error" << endl;
 		return -1;
 	}
 
 	string program = post_data;
-	long pos= program.find_last_of('*');
-	//获取程序代码
-	program = program.substr(pos+1);
+	long end=program.find_first_of('`');//代码结束位置下标
+	int pos= get_code_pos(post_data);//获取代码所在位置的下标
+	int len = end - pos;
+	if (pos == -1){
+		cout << "Not fund code" << endl;
+		return -1;
+	}
+	program = program.substr(pos,len);
+	//cout << program << endl;
+
 	int res = make_dir(userid, language, program);
 	if (res == -1){
 		chdir(DIR);//变更工作目录到源程序所在的文件夹

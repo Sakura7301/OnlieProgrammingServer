@@ -35,12 +35,14 @@ using namespace std;
 #define HEAD "Onlie*"			//固定包头
 #define HEAD_LEN 6				//包头长度
 #define USER_ID_LEN 8			//ID长度
-#define USER_LANGUAGE_LEN 8		//编程语言字节长度
+#define USER_LANGUAGE_LEN 8	   //编程语言字节长度
 
 //语言分类
-#define C		"C*******"
-#define CPP		"CPP*****"
-#define PYTHON	"PYTHON**"
+//这样设计是为了更好的分割字符串
+//只有识别到6个连续*才会匹配成功
+#define C		"CI******"
+#define CPP		"CP******"
+#define PYTHON	"PY******"
 
 //命令行操作
 #define TOUCH "touch "
@@ -80,3 +82,7 @@ int pthread_create_test(evhttp_request *req);
 
 //线程回调函数
 void* pthread_func(void* arg);
+
+int get_code_pos(char* data);
+
+int get_code_end_pos(char* data);
