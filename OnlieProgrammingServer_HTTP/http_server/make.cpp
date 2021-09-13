@@ -104,10 +104,10 @@ int make_test(evhttp_request *req,int language)
 int out_test(evhttp_request *req,int language)
 {
 	char data[BUFSIZ] = {0};
+	struct evbuffer *buf_make = evbuffer_new();
 	memset(data, '\0', sizeof(data));
 	string name("touch out");
 	system(name.c_str());//创建用于存储程序运行结果的文件out
-	struct evbuffer *buf_make = evbuffer_new();
 	if (language == 1 || language == 2)
 	{
 		//使用timeout限制程序执行时间为1秒(防止死循环的出现)

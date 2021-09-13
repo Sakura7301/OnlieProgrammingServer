@@ -64,19 +64,16 @@ int data_processing(struct bufferevent *bev)
 			if (language == -1) {
 				return -1;//读取失败
 			}
-
 			//读取数据包并创建相关文件夹
 			int res = makedir_test(bev, userid, language);
 			if (res == -1) {
 				return -2;//文件夹创建失败
 			}
-
 			//编译
 			res = make_test(bev, res);
 			if (res == -1){
 				return -3;//编译失败
 			}
-
 			//运行
 			res=out_test(bev, res);
 			if(res==-1){

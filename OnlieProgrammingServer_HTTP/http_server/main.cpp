@@ -2,8 +2,6 @@
 //请求处理模块
 void httpd_handler(struct evhttp_request *req, void *arg) 
 {
-	//char *buf = dispose_uri(req);
-	//cout << buf << endl;  
 	pthread_create_test(req);
 
 }
@@ -28,6 +26,9 @@ void signal_handler(int sig) {
 int main() {
 	//int argc, char *argv[]
 	//自定义信号处理函数
+	
+	//string packet_error = "Your packet is wrong.";
+	//struct evbuffer *buf_error = evbuffer_new();
 	signal(SIGHUP, signal_handler);
 	signal(SIGTERM, signal_handler);
 	signal(SIGINT, signal_handler);
