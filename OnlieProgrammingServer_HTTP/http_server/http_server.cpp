@@ -50,9 +50,6 @@ int dispose_data(struct evhttp_request *req)
 {
 	//获取POST方法的数据
 	char *post_data = (char *)EVBUFFER_DATA(req->input_buffer);
-	if(post_data==NULL){
-		return -2;
-	}
 	char userid[BUFSIZ] = { 0 };
 	char language[BUFSIZ] = { 0 };
 	char head[BUFSIZ] = { 0 };

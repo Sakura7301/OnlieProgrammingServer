@@ -38,15 +38,6 @@ void* pthread_func(void* arg)
 		return (void*)NULL;
 	}
 
-	if (res == -2)
-	{
-		cout << "dispose_data error" << endl;
-		string packet_error = "Your packet is wrong.";
-		struct evbuffer *buf_error = evbuffer_new();
-		evbuffer_add_printf(buf_error, packet_error.c_str());
-		evhttp_send_reply(req, HTTP_OK, "OK", buf_error);//·¢ËÍÊý¾Ý
-		return (void*)NULL;
-	}
 	return (void*)NULL;
 }
 

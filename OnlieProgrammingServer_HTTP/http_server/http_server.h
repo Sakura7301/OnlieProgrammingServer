@@ -53,6 +53,7 @@ using namespace std;
 //文件不存在
 #define NOFILE "File does not exist"
 
+#define HTML_PATH "../../../base.html"
 
 
 

@@ -87,6 +87,9 @@
   <ItemGroup>
     <ClInclude Include="http_server.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="base.html" />
+  </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <LibraryDependencies>event</LibraryDependencies>
