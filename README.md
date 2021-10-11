@@ -6,29 +6,31 @@
 
 编译结果和程序的输出结果会回复给客户端
 
-## **实现流程:**
+## **具体流程:**
 
       1.客户端连接服务器
   
-      2.客户端发送数据包(代码)
+      2.客户端发送HTTP请求(PUT)
   
-      3.服务器根据客户端ID新建独立的文件夹
+      3.服务器获取该请求的数据包data
+      
+      4.服务器获取数据包中的信息并以此为一个单独的连接建立文件夹
   
-      4.服务器进入该文件夹并创建程序文件,将编译结果和运行结果重复定向至文件中
+      5.服务器进入该文件夹并创建程序文件,将编译结果和运行结果重复定向至文件中
   
-      5.将编译结果和程序执行结果写回给客户端
+      6.将编译结果和程序执行结果写回给客户端
   
-      6.服务器删除客户端的文件夹
+      7.服务器删除客户端的文件夹
   
   
 ## **项目包含**
-  TCP服务器: [OnlieProgrammingServer](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer)
+  TCP服务器:  [OnlieProgrammingServer](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer)
   
   HTTP服务器: [OnlieProgrammingServer_HTTP](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer_HTTP)
   
-  QT客户端: [QTclient_Edit](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/QTclient_Edit)
+  QT客户端:   [QTclient_Edit](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/QTclient_Edit)
   
-  path: [path.txt](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/path.txt)
+  path:       [path.txt](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/path.txt)
   
  ## **测试效果展示:**
   
