@@ -73,11 +73,10 @@
   ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/Python_error.gif)
       
      
-     
  #### 未完成...
  #### 目前还缺少网页版,由于本人并不擅长制作网页,因此http的请求是使用postman模拟发出的,后续有机会会完善网页版。
   
- ### **关键词**:C/S模型、libevent、HTTP、多线程
+ ### **关键词**:C/S模型、libevent、HTTP、多线程、重定向、守护进程、信号处理
 
 
 
