@@ -21,6 +21,15 @@
       6.服务器删除客户端的文件夹
   
   
+## **项目包含**
+  TCP服务器: [OnlieProgrammingServer](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer)
+  
+  HTTP服务器: [OnlieProgrammingServer_HTTP](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer_HTTP)
+  
+  QT客户端: [QTclient_Edit](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/QTclient_Edit)
+  
+  path: [path.txt](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/path.txt)
+  
  ## **测试效果展示:**
   
 ### 服务器启动
@@ -62,6 +71,9 @@
   ![image](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/httptest/Python_error.gif)
       
      
+     
+ #### 未完成...
+ #### 目前还缺少网页版,由于本人并不擅长制作网页,因此http的请求是使用postman模拟发出的,后续有机会会完善网页版。
   
  ### **关键词**:C/S模型、libevent、HTTP、多线程
 
