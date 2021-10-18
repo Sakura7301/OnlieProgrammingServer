@@ -25,13 +25,13 @@
   
   
 ## **项目包含**
-  TCP服务器:  [OnlieProgrammingServer](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer)
+  - TCP服务器:  [OnlieProgrammingServer](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer)
   
-  HTTP服务器: [OnlieProgrammingServer_HTTP](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer_HTTP)
+  - HTTP服务器: [OnlieProgrammingServer_HTTP](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/OnlieProgrammingServer_HTTP)
   
-  QT客户端:   [QTclient_Edit](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/QTclient_Edit)
+  - QT客户端:   [QTclient_Edit](https://github.com/Sakura7301/OnlieProgrammingServer/tree/master/QTclient_Edit)
   
-  path:       [path.txt](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/path.txt)
+  - path:       [path.txt](https://github.com/Sakura7301/OnlieProgrammingServer/blob/master/path.txt)
   
  ## **测试效果展示:**
   
